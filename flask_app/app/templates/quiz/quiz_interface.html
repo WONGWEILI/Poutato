@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz interfaces</title>
+    <link href="https://fonts.cdnfonts.com/css/public-pixel" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/quiz_interface.css') }}">
+    <link href="https://fonts.cdnfonts.com/css/sofia-sans-condensed" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fontawesome.min.css') }}">   
+    <script src="https://kit.fontawesome.com/a2c9f2c27c.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div>
+       <a class="button_1" href="{{url_for('main.index')}}"><i class="fa-solid fa-arrow-left fa-3x"></i></a> 
+        <h1 class ="tittle"> QUIZ </h1>
+    </div>
+    <div class="image-container"></div>
+        <img src = "{{url_for('static', filename='img/quiz_interface_image.jpg')}}" class="quiz_interface_pic">
+        <a type="button" class="button_2"  href="{{url_for('quiz.game')}}">START</a>
+    </div>
+
+    <button id="toggleAudio" class="audio"><i class="fa-solid fa-volume-high fa-3x"></i></button>
+
+        <audio autoplay id="song">
+            <source src="{{ url_for('static', filename='audio/[MapleStory BGM] Ereve_ Raindrop Flower.mp3') }}" type="audio/mpeg">
+        </audio>
+
+    <button class="button_3" id="leaderboard-modal"><i class="fa-solid fa-medal fa-3x "></i>
+        <p>Leaderboard</p></button>
+            <dialog id="leaderboard" class="leaderboard">
+                <button class="close_modal" id="close-modal"><i class="fa-regular fa-circle-xmark fa-3x"></i></button>
+                <img class=modal-image src="{{url_for('static', filename='img/lol.jpg')}}">
+            </dialog>
+
+    <script>
+
+        const openbtn = document.querySelector('#leaderboard-modal');
+        const dialog = document.querySelector('#leaderboard');
+        const closebtn = document.querySelector('#close-modal');
+
+        openbtn.addEventListener('click', () => dialog.showModal());
+        closebtn.addEventListener('click', () => dialog.close());
+
+        const audioToggleBtn = document.querySelector('#toggleAudio');
+            audioToggleBtn.addEventListener('click', () => {
+        const audio = document.getElementById("song");
+        if (audio.paused) {
+            audio.play(); // Start the audio if it is paused
+            audioToggleBtn.innerHTML = '<i class="fa-solid fa-volume-high fa-3x"></i>'; // Update button text
+        } else {
+            audio.pause(); // Pause the audio
+            audioToggleBtn.innerHTML = '<i class="fa-solid fa-volume-xmark fa-3x"></i>'; // Update button text
+    }
+        });
+
+    </script>
+
+</body>
+
+
+</html>
