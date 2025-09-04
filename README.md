@@ -53,3 +53,11 @@ This project was developed as part of our Assignment.
 We would like to thank our lecturers and peers for their guidance and feedback throughout the process. 
 
 ---
+
+## 👀 Preview
+
+Here’s a quick look at our app in action:
+
+![ScreenShot](images/preview.png)
+
+---
